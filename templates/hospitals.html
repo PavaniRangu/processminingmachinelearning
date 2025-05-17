@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hospitals in {{ city }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f7f9fc;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e88e5;
+        }
+
+        .hospital-list {
+            max-width: 700px;
+            margin: 20px auto;
+        }
+
+        .hospital-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .hospital-card:hover {
+            transform: scale(1.02);
+        }
+
+        .hospital-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .hospital-phone {
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .back-btn {
+            display: block;
+            width: 150px;
+            margin: 30px auto;
+            padding: 10px 20px;
+            text-align: center;
+            background-color: #1e88e5;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .back-btn:hover {
+            background-color: #1669bb;
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>Hospitals in {{ city }}</h2>
+    <div class="hospital-list">
+        {% if hospitals %}
+            {% for hospital in hospitals %}
+                <div class="hospital-card">
+                    <div class="hospital-name">{{ hospital.name }}</div>
+                    <div class="hospital-phone">📞 {{ hospital.phone }}</div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align:center; color: #777;">No hospitals found for this location.</p>
+        {% endif %}
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="javascript:history.back()" 
+           style="display: inline-block; width: 150px; padding: 10px 20px; margin: 0 10px; 
+                  text-align: center; background-color: #1e88e5; color: white; 
+                  text-decoration: none; border-radius: 8px;">
+           ←  Previous Page
+        </a>
+    
+        <a href="/" 
+           style="display: inline-block; width: 150px; padding: 10px 20px; margin: 0 10px; 
+                  text-align: center; background-color: #4CAF50; color: white; 
+                  text-decoration: none; border-radius: 8px;">
+           ← Back to Home
+        </a>
+    </div>
+    
+    
+    
+
+</body>
+</html>
